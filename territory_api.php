@@ -1,7 +1,7 @@
 <?php
 
 // Read the dataset
-$data = array_map('str_getcsv', file('territory_data.csv'));
+$data = array_map('str_getcsv', file('data/territory_data.csv'));
 $headers = array_shift($data);
 $csv = [];
 foreach ($data as $row) {
