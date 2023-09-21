@@ -17,7 +17,17 @@ $postcode = $_GET['postcode'] ?? '';
 $response = [];
 foreach ($csv as $row) {
     if ($row['locality'] == $locality && $row['state'] == $state && $row['postcode'] == $postcode) {
-        $response[] = $row;
+        // Extract the desired columns
+        $territories = [
+            'territory1' => $row['territory1'],
+            'territory2' => $row['territory2'],
+            'territory3' => $row['territory3'],
+            'territory4' => $row['territory4'],
+            'territory5' => $row['territory5'],
+            'recall1' => $row['recall1'],
+            'recall2' => $row['recall2']
+        ];
+        $response[] = $territories;
     }
 }
 
