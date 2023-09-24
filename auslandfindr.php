@@ -23,6 +23,7 @@ foreach ($csv as $row) {
     if ($row['locality'] == $locality && $row['state'] == $state && $row['postcode'] == $postcode) {
         // Extract the desired columns
         $territories = [
+	    'territory_count' => $row['territory_count'],
             'territory1' => $row['territory1'],
             'territory2' => $row['territory2'],
             'territory3' => $row['territory3'],
