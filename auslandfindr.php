@@ -3,6 +3,21 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
+// Address formatting function
+function formatAddress($address) {
+    // Split the address into its components
+    $parts = explode(' ', $address);
+    
+    // The last two parts are the state and postcode
+    $postcode = array_pop($parts);
+    $state = array_pop($parts);
+    
+    // Convert the remaining parts (locality) to title case
+    $locality = ucwords(strtolower(implode(' ', $parts)));
+    
+    // Return the formatted address
+    return "$locality, $state $postcode";
+}
 
 // Read the dataset
 $data = array_map('str_getcsv', file('data/territory_data.csv'));
@@ -23,7 +38,7 @@ foreach ($csv as $row) {
     if ($row['locality'] == $locality && $row['state'] == $state && $row['postcode'] == $postcode) {
         // Extract the desired columns
         $territories = [
-	    'address' => $row['address'],
+            'address' => formatAddress($row['address']),
 	    'territory_count' => $row['territory_count'],
             'territory1' => $row['territory1'],
             'territory2' => $row['territory2'],
