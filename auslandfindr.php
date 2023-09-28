@@ -28,9 +28,9 @@ foreach ($data as $row) {
 }
 
 // Fetch parameters from the request
-$locality = strtoupper($_GET['locality'] ?? '');
-$state = strtoupper($_GET['state'] ?? '');
-$postcode = $_GET['postcode'] ?? '';
+$locality = strtoupper(trim($_GET['locality'] ?? ''));
+$state = strtoupper(trim($_GET['state'] ?? ''));
+$postcode = trim($_GET['postcode'] ?? '');
 
 // Search the dataset
 $response = [];
