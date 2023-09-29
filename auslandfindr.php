@@ -40,6 +40,9 @@ foreach ($csv as $row) {
         $territories = [
             'address' => formatAddress($row['address']),
 	    'territory_count' => $row['territory_count'],
+	    'locality' => $row['locality'],
+	    'state' => $row['state'], 
+	    'postcode' => $row['postcode'],
             'territory1' => $row['territory1'],
             'territory2' => $row['territory2'],
             'territory3' => $row['territory3'],
